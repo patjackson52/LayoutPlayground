@@ -6,4 +6,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="desc_like_this_item">Like this item</string>
+    <string name="desc_more_options_for_this_item">more options for this item</string>
 </resources>
