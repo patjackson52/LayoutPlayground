@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.module.AppGlideModule
@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.ic_item.*
 
 @GlideModule
-class MyAppGlideModule: AppGlideModule()
+class MyAppGlideModule : AppGlideModule()
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,31 +40,21 @@ class MainActivity : AppCompatActivity() {
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        (drawer_layout as DrawerLayout).addDrawerListener(toggle)
+        drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-        setItemViewModel(demoItemViewModel)
-        val navController = findNavController(R.id.nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
         nav_view.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawer_layout.closeDrawer(GravityCompat.START)
             true
         }
 
-//        setupActionBarWithNavController(this, navController)
-//        nav_view.setupWithNavController(navController)
-//        setupWithNavController(nav_view as NavigationView, navController)
-//        setupWithNavController()
+        setupActionBarWithNavController(navController, drawer_layout)
+        NavigationUI.setupWithNavController(nav_view, navController)
     }
 
-    fun setItemViewModel(viewModel: ItemViewModel) {
-        txt_title.text = viewModel.title
-        txt_subtitle.text = viewModel.subTitle
-        GlideApp.with(this)
-                .load(viewModel.imageUrl)
-                .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(this, 15, 2, "#7D9067", 10)))
-                .into(img_item)
-    }
+    override fun onSupportNavigateUp(): Boolean = Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

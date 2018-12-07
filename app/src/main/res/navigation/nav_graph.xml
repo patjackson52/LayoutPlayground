@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/instacartFragment">
+
+    <fragment
+        android:id="@+id/albumListFragment"
+        android:name="io.jackson.layoutplayground.AlbumListFragment"
+        android:label="AlbumListFragment"
+        tools:layout="@layout/fragment_album_list"/>
+    <fragment
+        android:id="@+id/instacartFragment"
+        android:name="io.jackson.layoutplayground.InstacartFragment"
+        android:label="InstacartFragment"
+        android:layout="@layout/content_main"/>
+</navigation>

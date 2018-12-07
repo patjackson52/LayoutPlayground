@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -20,7 +21,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/ic_item" />
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:defaultNavHost="true"
+        app:layout_anchor="@+id/appBarLayout"
+        app:layout_anchorGravity="bottom|center"
+        app:navGraph="@navigation/nav_graph" />
+
+    <!--<include layout="@layout/ic_item" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
