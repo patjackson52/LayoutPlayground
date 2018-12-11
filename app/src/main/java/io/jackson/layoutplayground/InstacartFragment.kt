@@ -23,10 +23,13 @@ class InstacartFragment : Fragment() {
             layoutManager = LinearLayoutManager(this.context)
             adapter = storeAdapter
         }
+
+        storeAdapter.setListData(mutableListOf(textViewModel.storeHeaderViewModel, testInfoCardViewModel))
     }
 }
 
 data class InstacartViewModel(val storeHeaderViewModel: StoreHeaderViewModel)
+
 data class StoreHeaderViewModel(val title: String,
                                 val subTitle: String,
                                 val imageUrl: String,
@@ -35,7 +38,12 @@ data class StoreHeaderViewModel(val title: String,
                                 val moreInfoString: String,
                                 val searchText: String)
 
-val textViewModel = InstacartViewModel(StoreHeaderViewModel(
+data class InfoCardViewModel(val bckgrndImageUrl: String,
+                             val infoIconImageUrl: String,
+                             val title: String,
+                             val subTitle: String)
+
+val textViewModel = InstacartViewModel(storeHeaderViewModel = StoreHeaderViewModel(
         title = "Sprouts Farmers Market",
         subTitle = "Stores in 94016",
         imageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Flogo_sprout.png?alt=media",
@@ -43,3 +51,10 @@ val textViewModel = InstacartViewModel(StoreHeaderViewModel(
         withInTime = "Within 2 hours",
         moreInfoString = "Everyday store prices • More info",
         searchText = "Search Sprouts Farmers Market"))
+
+val testInfoCardViewModel = InfoCardViewModel(
+        title = "Coupon savings",
+        subTitle = "Up to 40% off everyday essentials",
+        bckgrndImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/card-background@2x.png?alt=media",
+        infoIconImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/grocery-bag@2x.png?alt=media"
+)

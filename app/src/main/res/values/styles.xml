@@ -34,4 +34,15 @@
         <item name="android:textSize">@dimen/txt_subtitle_size</item>
     </style>
 
+    <style name="InfoCardTitle">
+        <item name="android:textColor">@color/infoCardDarkText</item>
+        <item name="android:textSize">@dimen/txt_info_card_title_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="InfoCardSubTitle">
+        <item name="android:textColor">@color/infoCardDarkText</item>
+        <item name="android:textSize">@dimen/txt_info_card_subtitle_size</item>
+    </style>
+
 </resources>

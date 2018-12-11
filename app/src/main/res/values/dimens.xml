@@ -15,4 +15,7 @@
     <dimen name="txt_title_size">20dp</dimen>
     <dimen name="txt_subtitle_size">14dp</dimen>
     <dimen name="txt_text2_size">10dp</dimen>
+
+    <dimen name="txt_info_card_title_size">16dp</dimen>
+    <dimen name="txt_info_card_subtitle_size">12dp</dimen>
 </resources>
