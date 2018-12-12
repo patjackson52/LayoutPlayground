@@ -56,5 +56,5 @@ val testInfoCardViewModel = InfoCardViewModel(
         title = "Coupon savings",
         subTitle = "Up to 40% off everyday essentials",
         bckgrndImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/card-background@2x.png?alt=media",
-        infoIconImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/grocery-bag@2x.png?alt=media"
+        infoIconImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/coupons-icon@2x.png?alt=media"
 )

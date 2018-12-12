@@ -12,8 +12,12 @@ import kotlinx.android.synthetic.main.item_info_card.view.*
 import kotlinx.android.synthetic.main.item_store_header.view.*
 import android.graphics.Shader
 import android.R.attr.resource
+import android.content.res.ColorStateList
 import android.graphics.drawable.BitmapDrawable
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
+import kotlinx.android.synthetic.main.nav_header_main.view.*
+import kotlinx.android.synthetic.main.search.view.*
 
 
 class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -74,6 +78,7 @@ class HeaderViewHolder(view: View) : BindingViewHolder<StoreHeaderViewModel>(vie
                 GlideApp.with(itemView)
                         .load(bckgrndImageUrl)
                         .into(imgBckgrnd)
+//                ImageViewCompat.setImageTintList(imgBckgrnd, ColorStateList.valueOf(ContextCompat.getColor(itemView.context, android.R.color.darker_gray)))
             }
         }
 
@@ -85,7 +90,7 @@ class InfoCardViewHolder(view: View) : BindingViewHolder<InfoCardViewModel>(view
 
     override fun bindViews(data: InfoCardViewModel) {
         val roundedCornersDrawable = itemView.resources.getDrawable(R.drawable.rounded_outline_8dp)
-        roundedCornersDrawable.setTint(ContextCompat.getColor(itemView.context, R.color.infoCardLightGreen))
+        roundedCornersDrawable.setTint(ContextCompat.getColor(itemView.context, R.color.infoCardYellow))
 
         with(data) {
             with(itemView) {

@@ -12,6 +12,8 @@
     <dimen name="list_item_icon_height">32dp</dimen>
     <dimen name="txt_drawable_padding">4dp</dimen>
 
+    <dimen name="txt_search_box_size">20dp</dimen>
+
     <dimen name="txt_title_size">20dp</dimen>
     <dimen name="txt_subtitle_size">14dp</dimen>
     <dimen name="txt_text2_size">10dp</dimen>

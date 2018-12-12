@@ -34,6 +34,10 @@
         <item name="android:textSize">@dimen/txt_subtitle_size</item>
     </style>
 
+    <style name="SearchBoxText">
+        <item name="android:textSize">@dimen/txt_search_box_size</item>
+    </style>
+
     <style name="InfoCardTitle">
         <item name="android:textColor">@color/infoCardDarkText</item>
         <item name="android:textSize">@dimen/txt_info_card_title_size</item>

@@ -4,11 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="gray_backgrd">#F8F8F9</color>
-    <color name="infoCardLightText">@android:color/black</color>
-    <color name="infoCardDarkText">@android:color/white</color>
+    <color name="infoCardDarkText">@android:color/black</color>
+    <color name="infoCardLightText">@android:color/white</color>
     <color name="infoCardLightGreen">#009F52</color>
     <color name="infoCardDarkGreen">#109237</color>
     <color name="infoCardDarkBlue">#01766C</color>
+    <color name="infoCardYellow">#F4DE87</color>
     <color name="infoCardIconBackground">@android:color/white</color>
+
+    <color name="listBackground">#F7F7F7</color>
+    <color name="white">@android:color/white</color>
 
 </resources>
