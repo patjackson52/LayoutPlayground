@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic__group_cart_ic_cart_circle" />
+    <item android:drawable="@drawable/ic__group_cart_ic_cart" android:left="6.0dip" android:top="7.0dip" android:right="6.0dip" android:bottom="6.0dip" />
+</layer-list>

@@ -33,8 +33,8 @@
         tools:text="$3.56" />
 
     <TextView
-        android:id="@+id/txtDiscount"
         style="@style/DiscountPriceTextView"
+        android:id="@+id/txtDiscount"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -75,4 +75,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="142dp" />
+
+    <TextView
+        android:id="@+id/imageButton"
+        style="@style/QuantityPickerTextView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingBottom="2dp"
+        android:text="+"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/ic_green" />
 </androidx.constraintlayout.widget.ConstraintLayout>

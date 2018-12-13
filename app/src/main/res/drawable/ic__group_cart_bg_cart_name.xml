@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset android:insetTop="10.0dip" android:insetBottom="7.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector>
+        <item>
+            <nine-patch android:src="@drawable/ic__group_cart_bg_cart_name_underline" android:tint="?colorControlActivated" />
+        </item>
+    </selector>
+</inset>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/ic__group_cart_icon_placeholder" />
+    <size android:height="@dimen/ic__group_cart_carts_item_image_edge" android:width="@dimen/ic__group_cart_carts_item_image_edge" />
+</shape>

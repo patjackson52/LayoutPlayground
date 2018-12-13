@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="abc_config_activityDefaultDur">220</integer>
+    <integer name="abc_config_activityShortDur">150</integer>
+    <integer name="app_bar_elevation_anim_duration">150</integer>
+    <integer name="bottom_sheet_slide_duration">150</integer>
+    <item type="integer" name="btn_animation_short">@android:integer/config_shortAnimTime</item>
+    <integer name="btn_lb_card_activated_animation_duration">150</integer>
+    <integer name="btn_lb_card_selected_animation_delay">400</integer>
+    <integer name="btn_lb_card_selected_animation_duration">150</integer>
+    <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="config_tooltipAnimTime">150</integer>
+    <integer name="date_length">5</integer>
+    <integer name="design_snackbar_text_max_lines">2</integer>
+    <integer name="design_tab_indicator_anim_duration_ms">300</integer>
+    <integer name="google_play_services_version">12451000</integer>
+    <integer name="hide_password_duration">320</integer>
+    <integer name="ic__display_type">0</integer>
+    <integer name="ic__displays_columns_browsegrid">2</integer>
+    <integer name="ic__displays_columns_featured_product">3</integer>
+    <integer name="ic__displays_columns_items">6</integer>
+    <integer name="ic__displays_columns_orderchanges">2</integer>
+    <integer name="ic__displays_columns_receipt">6</integer>
+    <integer name="ic__displays_columns_relateditemscount">2</integer>
+    <integer name="ic__displays_columns_stacked_item">1</integer>
+    <integer name="ic__displays_orientation">2</integer>
+    <integer name="ic__itemdetail_maxlines_collapsedbody">2</integer>
+    <integer name="light_text_alpha_hex">204</integer>
+    <integer name="mtrl_btn_anim_delay_ms">100</integer>
+    <integer name="mtrl_btn_anim_duration_ms">100</integer>
+    <integer name="mtrl_chip_anim_duration">100</integer>
+    <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
+    <integer name="show_password_duration">200</integer>
+    <integer name="status_bar_notification_info_maxnum">999</integer>
+</resources>

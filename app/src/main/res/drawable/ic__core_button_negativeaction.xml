@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="@color/ic__core_negativeactioncontour"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:id="@android:id/mask" android:drawable="@drawable/ic__core_bg_negativeactionbutton" />
+    </item>
+    <item>
+        <selector>
+            <item android:state_enabled="false" android:drawable="@drawable/ic__core_bg_disabledbuttoncontour" />
+            <item android:drawable="@drawable/ic__core_bg_negativeactionbutton" />
+        </selector>
+    </item>
+</ripple>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="@color/ic__googlelogin_button_ripple"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/il__button_radius" />
+            <solid android:color="@color/il__blue_google" />
+        </shape>
+    </item>
+    <item>
+        <selector>
+            <item android:state_enabled="false" android:drawable="@drawable/ic__core_bg_disabledbutton" />
+            <item android:drawable="@drawable/ic__account_shape_googlelogin" />
+        </selector>
+    </item>
+</ripple>
