@@ -1,22 +1,17 @@
 package io.jackson.layoutplayground
 
-import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.item_info_card.view.*
 import kotlinx.android.synthetic.main.item_store_header.view.*
-import android.graphics.Shader
-import android.R.attr.resource
-import android.content.res.ColorStateList
-import android.graphics.drawable.BitmapDrawable
 import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
-import kotlinx.android.synthetic.main.nav_header_main.view.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import io.jackson.layoutplayground.carousel.CarouselItemAdapter
+import kotlinx.android.synthetic.main.item_carousel.view.*
 import kotlinx.android.synthetic.main.search.view.*
 
 
@@ -27,6 +22,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         return when (viewType) {
             R.layout.item_store_header -> HeaderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_store_header, parent, false))
             R.layout.item_info_card -> InfoCardViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_info_card, parent, false))
+            R.layout.item_carousel -> CarouselItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_carousel, parent, false))
             else -> throw AssertionError("onCreateViewHolder not implemented for viewType: $viewType")
         }
     }
@@ -39,6 +35,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         when (holder) {
             is HeaderViewHolder -> holder.bindViews(data[position] as StoreHeaderViewModel)
             is InfoCardViewHolder -> holder.bindViews(data[position] as InfoCardViewModel)
+            is CarouselItemViewHolder -> holder.bindViews(data[position] as ItemCarouselViewModel)
         }
     }
 
@@ -46,6 +43,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         return when (data[position]) {
             is StoreHeaderViewModel -> R.layout.item_store_header
             is InfoCardViewModel -> R.layout.item_info_card
+            is ItemCarouselViewModel -> R.layout.item_carousel
             else -> throw AssertionError("type not specified")
         }
     }
@@ -89,8 +87,8 @@ class HeaderViewHolder(view: View) : BindingViewHolder<StoreHeaderViewModel>(vie
 class InfoCardViewHolder(view: View) : BindingViewHolder<InfoCardViewModel>(view) {
 
     override fun bindViews(data: InfoCardViewModel) {
-        val roundedCornersDrawable = itemView.resources.getDrawable(R.drawable.rounded_outline_8dp)
-        roundedCornersDrawable.setTint(ContextCompat.getColor(itemView.context, R.color.infoCardYellow))
+        val roundedCornersDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.rounded_outline_8dp)
+        roundedCornersDrawable!!.setTint(ContextCompat.getColor(itemView.context, R.color.infoCardYellow))
 
         with(data) {
             with(itemView) {
@@ -109,6 +107,20 @@ class InfoCardViewHolder(view: View) : BindingViewHolder<InfoCardViewModel>(view
             }
         }
 
+    }
+
+}
+
+class CarouselItemViewHolder(view: View) : BindingViewHolder<ItemCarouselViewModel>(view) {
+
+    override fun bindViews(data: ItemCarouselViewModel) {
+        itemView.txtCarouselTitle.text = data.title
+        itemView.carouselRecyclerView.apply {
+            layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = CarouselItemAdapter().apply {
+                this.data = data.items.toMutableList()
+            }
+        }
     }
 
 }

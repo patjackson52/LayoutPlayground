@@ -5,6 +5,7 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="item_carousel_height">300dp</dimen>
     <dimen name="list_item_image_width">60dp</dimen>
     <dimen name="list_item_image_height">60dp</dimen>
     <dimen name="list_item_title_height">32sp</dimen>
@@ -20,4 +21,8 @@
 
     <dimen name="txt_info_card_title_size">16dp</dimen>
     <dimen name="txt_info_card_subtitle_size">12dp</dimen>
+
+    <dimen name="txt_carousel_item_price">14sp</dimen>
+    <dimen name="txt_carousel_item_name">12sp</dimen>
+    <dimen name="txt_carousel_item_quantity">11sp</dimen>
 </resources>

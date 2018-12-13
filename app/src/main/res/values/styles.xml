@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorControlHighlight">@color/ic_light_green</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -49,4 +50,31 @@
         <item name="android:textSize">@dimen/txt_info_card_subtitle_size</item>
     </style>
 
+    <style name="CarouselButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/ic_green</item>
+    </style>
+
+    <style name="CarouselItemPriceTextView">
+        <item name="android:textColor">@color/carouselItemPrice</item>
+        <item name="android:textSize">@dimen/txt_carousel_item_price</item>
+    </style>
+
+
+    <style name="CarouselItemNameTextView">
+        <item name="android:textColor">@color/carouselItemName</item>
+        <item name="android:textSize">@dimen/txt_carousel_item_name</item>
+    </style>
+
+    <style name="CarouselItemQuantityTextView">
+        <item name="android:textColor">@color/carouselItemQuantity</item>
+        <item name="android:textSize">@dimen/txt_carousel_item_quantity</item>
+    </style>
+
+    <style name="DiscountPriceTextView">
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:background">@drawable/rounded_txt_red</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
