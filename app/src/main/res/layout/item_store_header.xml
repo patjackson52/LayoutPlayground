@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_store_header"
     android:layout_width="match_parent"
-    android:layout_height="296dp">
+    android:layout_height="324dp">
 
     <ImageView
         android:id="@+id/imgBckgrnd"
@@ -34,7 +34,7 @@
         style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:drawableEnd="@drawable/ic_arrow_drop_down_circle_white_16dp"
         android:drawablePadding="4dp"
         app:layout_constraintEnd_toEndOf="parent"

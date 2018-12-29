@@ -1,6 +1,5 @@
 package io.jackson.layoutplayground.carousel
 
-import android.content.Context
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -12,12 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.jackson.layoutplayground.*
 import kotlinx.android.synthetic.main.item_carousel_item.view.*
+import java.lang.IllegalArgumentException
 
 
 /**
  * Viewholder for individual item in a horizontal carousel of items
  */
-class ItemViewHolder(view: View): BindingViewHolder<Item>(view) {
+class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
 
     private val orgPriceColor by lazy { ContextCompat.getColor(itemView.context, R.color.carouselItemQuantity) }
     private val discountPriceColor by lazy { ContextCompat.getColor(itemView.context, R.color.red) }
@@ -59,6 +59,37 @@ class CarouselItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bindViews(data[position])
+    }
+
+}
+
+
+class FreeDeliveryItemAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    lateinit var data: FreeDeliveryCardViewModel
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
+        return when (viewType) {
+            R.layout.item_free_delivery_title -> FreeDeliveryTitleHolder(view)
+            R.layout.item_free_delivery_store -> FreeDeliveryStoreItemHolder(view)
+            else -> throw IllegalArgumentException("Viewtype $viewType not handled")
+        }
+    }
+
+    override fun getItemCount() = data.storeIcons.size + 1
+
+    override fun getItemViewType(position: Int): Int {
+        return when (position) {
+            0 -> R.layout.item_free_delivery_title
+            else -> R.layout.item_free_delivery_store
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (position) {
+            0 -> (holder as FreeDeliveryTitleHolder).bindViews(data)
+            else -> (holder as FreeDeliveryStoreItemHolder).bindViews(data.storeIcons[position - 1])
+        }
     }
 
 }

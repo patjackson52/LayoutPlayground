@@ -10,6 +10,7 @@
     <color name="infoCardDarkGreen">#109237</color>
     <color name="infoCardDarkBlue">#01766C</color>
     <color name="infoCardYellow">#F4DE87</color>
+    <color name="infoCardBlue">#29B6F6</color>
     <color name="infoCardIconBackground">@android:color/white</color>
 
     <color name="carouselItemPrice">#ff757575</color>

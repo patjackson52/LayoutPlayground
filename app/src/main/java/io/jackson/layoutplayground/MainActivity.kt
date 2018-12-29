@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
         scrimLayout.setOnInsetsCallback {
             rootContent.setPadding(0, -it.top, 0, 0)
         }
-        setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+//        setSupportActionBar(toolbar)
+//        val toggle = ActionBarDrawerToggle(
+//                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+//        drawer_layout.addDrawerListener(toggle)
+//        toggle.syncState()
 
         val navController = findNavController(R.id.nav_host_fragment)
         nav_view.setNavigationItemSelectedListener { menuItem ->
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        setupActionBarWithNavController(navController, drawer_layout)
+//        setupActionBarWithNavController(navController, drawer_layout)
         NavigationUI.setupWithNavController(nav_view, navController)
     }
 

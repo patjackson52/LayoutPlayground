@@ -24,7 +24,7 @@ class InstacartFragment : Fragment() {
             adapter = storeAdapter
         }
 
-        storeAdapter.setListData(mutableListOf(textViewModel.storeHeaderViewModel, testInfoCardViewModel, testItemCarouselViewModel))
+        storeAdapter.setListData(mutableListOf(testViewModel.storeHeaderViewModel, testInfoCardViewModel, testItemCarouselViewModel, testFreeDeliveryViewModel))
     }
 }
 
@@ -43,6 +43,14 @@ data class InfoCardViewModel(val bckgrndImageUrl: String,
                              val title: String,
                              val subTitle: String)
 
+data class FreeDeliveryCardViewModel(val bckgrndImageUrl: String,
+                                     val title: String,
+                                     val subTitle: String,
+                                     val storeIcons: List<StoreIcon>)
+
+data class StoreIcon(val iconUrl: String,
+                     val name: String)
+
 data class ItemCarouselViewModel(
         val title: String,
         val items: List<Item>)
@@ -54,7 +62,7 @@ data class Item(val imageUrl: String,
                 val name: String,
                 val quantity: String)
 
-val textViewModel = InstacartViewModel(storeHeaderViewModel = StoreHeaderViewModel(
+val testViewModel = InstacartViewModel(storeHeaderViewModel = StoreHeaderViewModel(
         title = "Sprouts Farmers Market",
         subTitle = "Stores in 94016",
         imageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Flogo_sprout.png?alt=media",
@@ -68,6 +76,23 @@ val testInfoCardViewModel = InfoCardViewModel(
         subTitle = "Up to 40% off everyday essentials",
         bckgrndImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/card-background@2x.png?alt=media",
         infoIconImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/coupons-icon@2x.png?alt=media"
+)
+
+val testFreeDeliveryViewModel = FreeDeliveryCardViewModel(
+        title = "Free Delivery",
+        subTitle = "with select items",
+        bckgrndImageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/card-background@2x.png?alt=media",
+        storeIcons = listOf(
+                StoreIcon(
+                        iconUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Flogo_sprout.png?alt=media",
+                        name = "Sprouts"),
+                StoreIcon(
+                        iconUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Fbevmo.png?alt=media",
+                        name = "Bevmo"),
+                StoreIcon(
+                        iconUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Fbi_rite.png?alt=media",
+                        name = "Bi-rite")
+        )
 )
 
 val testItemCarouselViewModel = ItemCarouselViewModel(
