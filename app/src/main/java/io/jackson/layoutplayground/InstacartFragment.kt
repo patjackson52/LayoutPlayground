@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.search.*
+import java.util.*
 
 class InstacartFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class InstacartFragment : Fragment() {
                 testItemCarouselViewModel,
                 testFreeDeliveryViewModel,
                 testItemSproutsBrandViewModel))
-        
+
         rootRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 layout_search.getLocationOnScreen(loc)
@@ -115,7 +116,8 @@ data class Item(val imageUrl: String,
                 val priceOrg: String,
                 val discount: String? = null,
                 val name: String,
-                val quantity: String)
+                val quantity: String,
+                val id: String = UUID.randomUUID().toString())
 
 val testViewModel = InstacartViewModel(storeHeaderViewModel = StoreHeaderViewModel(
         title = "Sprouts Farmers Market",

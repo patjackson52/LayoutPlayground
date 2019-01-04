@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import io.jackson.layoutplayground.*
 import kotlinx.android.synthetic.main.item_carousel_item.view.*
 import java.lang.IllegalArgumentException
-import androidx.constraintlayout.widget.ConstraintSet
 import kotlinx.android.synthetic.main.quantity_picker.view.*
 
 
@@ -25,6 +24,7 @@ class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
 
     private val orgPriceColor by lazy { ContextCompat.getColor(itemView.context, R.color.carouselItemQuantity) }
     private val discountPriceColor by lazy { ContextCompat.getColor(itemView.context, R.color.red) }
+    private var userQuantity = 1
 
     override fun bindViews(data: Item) {
         with(itemView) {
@@ -49,12 +49,44 @@ class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
             txtName.text = data.name
             txtQuantity.text = data.quantity
             btnAdd.setOnClickListener {
+                userQuantity++
+                if (userQuantity == 1) {
+                    btnMinus.setImageResource(R.drawable.ic__trash)
+                } else {
+                    btnMinus.setImageResource(R.drawable.ic__minus)
+                }
+                itemView.txtQuantityPicker.text = userQuantity.toString()
                 itemView.layout_fade.visibility = View.VISIBLE
                 itemView.layout_quantity_picker.visibility = View.VISIBLE
                 itemView.layout_quantity_picker.requestFocus()
+                btnPlus.setOnClickListener {
+                    userQuantity++
+                    if (userQuantity == 1) {
+                        btnMinus.setImageResource(R.drawable.ic__trash)
+                    } else {
+                        btnMinus.setImageResource(R.drawable.ic__minus)
+                    }
+                    itemView.txtQuantityPicker.text = userQuantity.toString()
+                }
+                btnMinus.setOnClickListener {
+                    userQuantity--
+                    when (userQuantity) {
+                        0 -> {
+                            itemView.layout_quantity_picker.visibility = View.GONE
+                            itemView.layout_fade.visibility = View.GONE
+                        }
+                        1 -> {
+                            btnMinus.setImageResource(R.drawable.ic__trash)
+                            itemView.txtQuantityPicker.text = userQuantity.toString()
+                        }
+                        else -> {
+                            btnMinus.setImageResource(R.drawable.ic__minus)
+                            itemView.txtQuantityPicker.text = userQuantity.toString()
+                        }
+                    }
+                }
                 itemView.layout_quantity_picker.setOnFocusChangeListener { v, hasFocus ->
                     if (!hasFocus) {
-                        itemView.txtQuantityPicker.text = "1"
                         itemView.layout_quantity_picker.visibility = View.GONE
                         itemView.layout_fade.visibility = View.GONE
                     }
