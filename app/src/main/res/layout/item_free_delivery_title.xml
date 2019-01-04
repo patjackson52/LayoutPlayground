@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <TextView
+        style="@style/InfoCarouselTitle"
         android:id="@+id/txt_free_delivery_title"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
@@ -23,6 +24,7 @@
         tools:text="Free Delivery" />
 
     <TextView
+        style="@style/InfoCarouselSubTitle"
         android:id="@+id/txt_free_delivery_subtitle"
         app:layout_constraintVertical_chainStyle="packed"
         android:layout_width="wrap_content"

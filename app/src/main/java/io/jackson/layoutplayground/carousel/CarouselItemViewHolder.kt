@@ -1,5 +1,6 @@
 package io.jackson.layoutplayground.carousel
 
+import android.animation.Animator
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -7,11 +8,14 @@ import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.jackson.layoutplayground.*
 import kotlinx.android.synthetic.main.item_carousel_item.view.*
 import java.lang.IllegalArgumentException
+import androidx.constraintlayout.widget.ConstraintSet
+import kotlinx.android.synthetic.main.quantity_picker.view.*
 
 
 /**
@@ -44,6 +48,18 @@ class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
             }
             txtName.text = data.name
             txtQuantity.text = data.quantity
+            btnAdd.setOnClickListener {
+                itemView.layout_fade.visibility = View.VISIBLE
+                itemView.layout_quantity_picker.visibility = View.VISIBLE
+                itemView.layout_quantity_picker.requestFocus()
+                itemView.layout_quantity_picker.setOnFocusChangeListener { v, hasFocus ->
+                    if (!hasFocus) {
+                        itemView.txtQuantityPicker.text = "1"
+                        itemView.layout_quantity_picker.visibility = View.GONE
+                        itemView.layout_fade.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
 }

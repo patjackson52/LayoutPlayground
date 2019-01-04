@@ -98,7 +98,7 @@ class InfoCardViewHolder(view: View) : BindingViewHolder<InfoCardViewModel>(view
 
     override fun bindViews(data: InfoCardViewModel) {
         val roundedCornersDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.rounded_outline_8dp)
-        roundedCornersDrawable!!.setTint(ContextCompat.getColor(itemView.context, R.color.infoCardYellow))
+        roundedCornersDrawable!!.setTint(ContextCompat.getColor(itemView.context, data.tintColor))
 
         with(data) {
             with(itemView) {

@@ -1,11 +1,13 @@
 package io.jackson.layoutplayground
 
+import android.graphics.Rect
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -43,6 +45,20 @@ class MainActivity : AppCompatActivity() {
 
 //        setupActionBarWithNavController(navController, drawer_layout)
         NavigationUI.setupWithNavController(nav_view, navController)
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val view: View? = currentFocus
+            if (view?.tag == "quantityPicker") {
+                val outRect = Rect()
+                view.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    view.clearFocus()
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 
     override fun onSupportNavigateUp(): Boolean = Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()

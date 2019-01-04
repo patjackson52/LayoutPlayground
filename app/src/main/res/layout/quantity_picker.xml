@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_quantity_picker"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/quantity_picker_height"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:background="@color/white"
+    android:elevation="3dp"
+    android:focusableInTouchMode="true"
+    android:tag="quantityPicker">
+
+    <ImageButton
+        android:id="@+id/btnMinus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:tint="@color/ic_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtQuantityPicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/minus" />
+
+
+    <TextView
+        android:id="@+id/txtQuantityPicker"
+        style="@style/QuantityPickerText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlus"
+        app:layout_constraintStart_toEndOf="@+id/btnMinus"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
+
+    <ImageButton
+        android:id="@+id/btnPlus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:tint="@color/ic_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtQuantityPicker"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic__core_ic_add_material" />
+</androidx.constraintlayout.widget.ConstraintLayout>

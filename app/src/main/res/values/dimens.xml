@@ -12,6 +12,9 @@
     <dimen name="list_item_subtitle_height">24sp</dimen>
     <dimen name="list_item_icon_height">32dp</dimen>
     <dimen name="txt_drawable_padding">4dp</dimen>
+    <dimen name="layout_search_bar_size">56dp</dimen>
+    <dimen name="quantity_picker_width">100dp</dimen>
+    <dimen name="quantity_picker_height">48dp</dimen>
 
     <dimen name="txt_search_box_size">20dp</dimen>
 

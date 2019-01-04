@@ -21,8 +21,6 @@
             android:id="@+id/carouselFreeDeliveryRecyclerView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
