@@ -1,10 +1,10 @@
 package io.jackson.layoutplayground
 
-import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.item_info_card.view.*
@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.search.view.*
 
 class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var data = mutableListOf<Any>()
+    private var lastPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
@@ -47,6 +48,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
             is CarouselItemViewHolder -> holder.bindViews(data[position] as ItemCarouselViewModel)
             is FreeDeliveryCardViewHolder -> holder.bindViews(data[position] as FreeDeliveryCardViewModel)
         }
+        setAnimation(holder.itemView, position)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -62,6 +64,16 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
     fun setListData(data: MutableList<Any>) {
         this.data = data
+        notifyDataSetChanged()
+    }
+
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.fade_in)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
     }
 }
 
@@ -133,7 +145,7 @@ class FreeDeliveryCardViewHolder(view: View) : BindingViewHolder<FreeDeliveryCar
                         .into(object : SimpleTarget<Drawable>() {
                             override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                                 itemView.post {
-//                                    resource.setTint(backgndTint)
+                                    //                                    resource.setTint(backgndTint)
                                     layout_free_delivery_root.setBackgroundColor(backgndTint)
                                     carouselFreeDeliveryRecyclerView.background = resource
                                 }
@@ -181,6 +193,7 @@ class CarouselItemViewHolder(view: View) : BindingViewHolder<ItemCarouselViewMod
             adapter = CarouselItemAdapter().apply {
                 this.data = data.items.toMutableList()
             }
+            (adapter as CarouselItemAdapter).runLayoutAnimation(this)
         }
     }
 

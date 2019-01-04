@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        android:layoutAnimation="@anim/layout_animation_fade_in"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <TextView

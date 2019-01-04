@@ -63,6 +63,13 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="PlaceholderTextView">
+        <item name="android:layout_height">@dimen/placeholder_height</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:background">@color/placeholder_txt</item>
+    </style>
+
     <style name="InfoCardTitle">
         <item name="android:textColor">@color/infoCardDarkText</item>
         <item name="android:textSize">@dimen/txt_info_card_title_size</item>

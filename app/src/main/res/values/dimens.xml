@@ -29,6 +29,7 @@
     <dimen name="txt_carousel_item_name">12sp</dimen>
     <dimen name="txt_carousel_item_quantity">11sp</dimen>
 
+    <dimen name="placeholder_height">12dp</dimen>
 
 
     <dimen name="abc_action_bar_content_inset_material">16.0dip</dimen>

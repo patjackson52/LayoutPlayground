@@ -1,6 +1,7 @@
 package io.jackson.layoutplayground
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,27 @@ class InstacartFragment : Fragment() {
 
         storeAdapter.setListData(mutableListOf(testViewModel.storeHeaderViewModel,
                 testInfoCardViewModel,
-                testItemCarouselViewModel,
+                testItemCarouselPlaceholder,
                 testFreeDeliveryViewModel,
-                testItemSproutsBrandViewModel))
+                testItemCarouselPlaceholder,
+                testItemCarouselPlaceholder))
+
+        Handler().postDelayed({
+            storeAdapter.setListData(mutableListOf(testViewModel.storeHeaderViewModel,
+                    testInfoCardViewModel,
+                    testItemCarouselViewModel,
+                    testFreeDeliveryViewModel,
+                    testItemCarouselPlaceholder,
+                    testItemCarouselPlaceholder))
+        }, 2000)
+        Handler().postDelayed({
+            storeAdapter.setListData(mutableListOf(testViewModel.storeHeaderViewModel,
+                    testInfoCardViewModel,
+                    testItemCarouselViewModel,
+                    testFreeDeliveryViewModel,
+                    testItemSproutsBrandViewModel,
+                    testItemCarouselPlaceholder))
+        }, 5000)
 
         rootRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -117,7 +136,12 @@ data class Item(val imageUrl: String,
                 val discount: String? = null,
                 val name: String,
                 val quantity: String,
-                val id: String = UUID.randomUUID().toString())
+                val id: String = UUID.randomUUID().toString()) {
+    companion object {
+        const val PLACE_HOLDER_ID = "<place_holder>"
+        val PLACE_HOLDER = Item("", null, "", "", "", "", PLACE_HOLDER_ID)
+    }
+}
 
 val testViewModel = InstacartViewModel(storeHeaderViewModel = StoreHeaderViewModel(
         title = "Sprouts Farmers Market",
@@ -153,6 +177,10 @@ val testFreeDeliveryViewModel = FreeDeliveryCardViewModel(
         )
 )
 
+val testItemCarouselPlaceholder = ItemCarouselViewModel(
+        title = "Based on your cart",
+        items = listOf(Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER, Item.PLACE_HOLDER)
+)
 val testItemCarouselViewModel = ItemCarouselViewModel(
         title = "Based on your cart",
         items = listOf(
@@ -174,7 +202,7 @@ val testItemCarouselViewModel = ItemCarouselViewModel(
                         imageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Fsprout%2Fsuggestions%2Fchx_tenders.JPG?alt=media",
                         discountPrice = "$3.56",
                         priceOrg = "$5.49",
-                        discount = "$1.93",
+                        discount = "$1.93 off",
                         name = "Garden Seven Grain Crispy Tenders",
                         quantity = "9 oz"
                 ),
@@ -216,7 +244,7 @@ val testItemSproutsBrandViewModel = ItemCarouselViewModel(
                 Item(
                         imageUrl = "https://firebasestorage.googleapis.com/v0/b/jackson-ui-demos.appspot.com/o/stores%2Fsprout%2Fsuggestions%2Ffield_roast2.png?alt=media",
                         discountPrice = "$3.50",
-                        discount = "$0.49",
+                        discount = "$0.49 off",
                         priceOrg = "$3.99",
                         name = "Sprouts Drinking Water",
                         quantity = "24 ct"

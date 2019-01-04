@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/listBackground"
+        android:layoutAnimation="@anim/layout_animation_fade_in"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

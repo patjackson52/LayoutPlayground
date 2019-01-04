@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="165dp"
+    android:layout_height="258dp"
+    android:animateLayoutChanges="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    tools:layout_height="250dp"
+    tools:layout_width="150dp">
+
+    <View
+        android:id="@+id/imgItem"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/placeholder_image"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <View
+        android:id="@+id/txtPrice"
+        style="@style/PlaceholderTextView"
+        android:layout_width="40dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/imgItem"
+        app:layout_constraintTop_toBottomOf="@+id/imgItem" />
+
+    <View
+        android:id="@+id/txtDiscount"
+        style="@style/PlaceholderTextView"
+        android:layout_width="123dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+
+    <View
+        android:id="@+id/txtName"
+        style="@style/PlaceholderTextView"
+        android:layout_width="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtDiscount" />
+
+    <View
+        android:id="@+id/txtQuantity"
+        style="@style/PlaceholderTextView"
+        android:layout_width="75dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="9dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="142dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

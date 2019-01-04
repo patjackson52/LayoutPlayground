@@ -8,13 +8,18 @@ import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.jackson.layoutplayground.*
 import kotlinx.android.synthetic.main.item_carousel_item.view.*
 import java.lang.IllegalArgumentException
 import kotlinx.android.synthetic.main.quantity_picker.view.*
+import android.view.animation.AnimationUtils.loadAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
+
+
 
 
 /**
@@ -27,6 +32,8 @@ class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
     private var userQuantity = 1
 
     override fun bindViews(data: Item) {
+        if (data.id == Item.PLACE_HOLDER_ID) return
+
         with(itemView) {
             GlideApp.with(itemView)
                     .load(data.imageUrl)
@@ -98,17 +105,42 @@ class ItemViewHolder(view: View) : BindingViewHolder<Item>(view) {
 
 class CarouselItemAdapter : RecyclerView.Adapter<ItemViewHolder>() {
     var data: MutableList<Item> = mutableListOf()
+    private var lastPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_carousel_item, parent, false))
+        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(viewType, parent, false))
     }
 
     override fun getItemCount() = data.size
+
+    override fun getItemViewType(position: Int): Int {
+        return when (data[position].id) {
+            Item.PLACE_HOLDER_ID -> R.layout.item_carousel_placeholder
+            else -> R.layout.item_carousel_item
+        }
+    }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bindViews(data[position])
     }
 
+    private fun setAnimation(viewToAnimate: View, position: Int) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.fade_in)
+            viewToAnimate.startAnimation(animation)
+            lastPosition = position
+        }
+    }
+
+    fun runLayoutAnimation(recyclerView: RecyclerView) {
+        val context = recyclerView.context
+        val controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fade_in)
+
+        recyclerView.layoutAnimation = controller
+        recyclerView.adapter!!.notifyDataSetChanged()
+        recyclerView.scheduleLayoutAnimation()
+    }
 }
 
 
